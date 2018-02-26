@@ -7,7 +7,7 @@ class TODOItemQuerySet(QuerySet):
         # TODO move to manager
         MAX = 1000000
         BUFFER = 5000
-        total = self.objects.count()
+        total = self.count()
         if total > MAX:
             pk_pointer = self.order_by('pk')[:total-MAX+BUFFER].aggregate(Max('pk'))['pk__max']
             self.filter(pk__lt=pk_pointer).delete()

@@ -1,1 +1,14 @@
 {% extends "base.html" %}
+
+{% block content%}
+  <h1>Welcome To ToDo API Playground</h1>
+  <ul>
+      <li>There is only one API that provides full RESTful service on ToDo Items. It's designed to help everyone to test their code to integrate with a RESTful API.</li>
+
+      <li>ToDo items are grouped by sessions, you can override the session id by specifying session_id value in your request header.</li>
+      <li>There is a maximum rows in ToDo table globally to protect the service not being overrun, once maximum rows has reached, it will start evicting oldest items.</li>
+      <li>Any problems, email james@lin.net.nz</li>
+  </ul>
+
+  <h2><a href="/api/todos/">Go To API</a></h2>
+{% endblock %}

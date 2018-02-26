@@ -1,8 +1,7 @@
 # encoding: utf-8
-from django.db.models import Max
 from rest_framework import viewsets
-from apps.todos.api.serializers import TODOItemSerializer
-from apps.todos.models import TODOItem
+from todobackend.todos.api.serializers import TODOItemSerializer
+from todobackend.todos.models import TODOItem
 
 class TodoItemViewSet(viewsets.ModelViewSet):
     serializer_class = TODOItemSerializer

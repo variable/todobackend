@@ -1,6 +1,6 @@
 # encoding: utf-8
 from rest_framework import routers
-from apps.todos.api.views import TodoItemViewSet
+from todobackend.todos.api.views import TodoItemViewSet
 
 
 router = routers.SimpleRouter()

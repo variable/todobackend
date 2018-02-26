@@ -56,7 +56,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     # custom users app
     'todobackend.users.apps.UsersConfig',
-    'apps.todos',
+    'todobackend.todos',
     # Your stuff: custom apps go here
 ]
 

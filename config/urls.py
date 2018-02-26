@@ -13,10 +13,10 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
 
-    path('', include('apps.todos.urls')),
+    path('', include('todobackend.todos.urls')),
     # User management
-    # url(r'^users/', include('todobackend.users.urls', namespace='users')),
-    # url(r'^accounts/', include('allauth.urls')),
+    url(r'^users/', include('todobackend.users.urls', namespace='users')),
+    url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
 

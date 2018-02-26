@@ -1,9 +1,9 @@
 # encoding: utf-8
 from rest_framework import serializers
-from apps.todos.models import TODOItem
+from todobackend.todos.models import TODOItem
 
 
 class TODOItemSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = '__all__'
+        exclude = ['session_id']
         model = TODOItem
