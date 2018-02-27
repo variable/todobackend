@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.db.models import Max, QuerySet
 
@@ -14,7 +15,8 @@ class TODOItemQuerySet(QuerySet):
 
 
 class TODOItem(models.Model):
-    session_id = models.CharField(max_length=255, db_index=True, blank=True)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    session_id = models.CharField(max_length=255, db_index=True, blank=True, editable=False)
     description = models.CharField(max_length=255)
     priority = models.IntegerField(default=10)
     created_at = models.DateTimeField(auto_now_add=True)

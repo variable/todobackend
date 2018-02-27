@@ -5,5 +5,5 @@ from todobackend.todos.models import TODOItem
 
 class TODOItemSerializer(serializers.ModelSerializer):
     class Meta:
-        exclude = ['session_id']
+        fields = '__all__'
         model = TODOItem

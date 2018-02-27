@@ -10,7 +10,7 @@ class TodoItemViewSet(viewsets.ModelViewSet):
     def session_id(self):
         if not self.request.session.session_key:
             self.request.session.save()
-        return self.request.META.get('session_id') or self.request.session.session_key
+        return self.request.META.get('HTTP_SESSION_ID') or self.request.session.session_key
 
     def get_queryset(self):
         return TODOItem.objects.filter(session_id=self.session_id)
@@ -18,6 +18,3 @@ class TodoItemViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(session_id=self.session_id)
         TODOItem.objects.trim_rows()
-
-    def perform_update(self, serializer):
-        serializer.save(session_id=self.session_id)
