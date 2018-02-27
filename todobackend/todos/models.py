@@ -20,9 +20,9 @@ class TODOItem(models.Model):
     description = models.CharField(max_length=255)
     priority = models.IntegerField(default=10)
     created_at = models.DateTimeField(auto_now_add=True)
-    completed_date = models.DateTimeField(null=True)
+    completed_at = models.DateTimeField(null=True)
     objects = TODOItemQuerySet.as_manager()
 
 
     class Meta:
-        ordering = ['-completed_date', 'priority', '-created_at']
+        ordering = ['-completed_at', 'priority', '-created_at']
