@@ -18,5 +18,11 @@ var todo_app = new Vue({
                 description: 'test2'
             },
         ]
+    },
+    methods: {
+        create () {
+            description = this.$refs.new_text.value;
+            if (!description) {alert('Please enter description'); return;}
+        }
     }
 });

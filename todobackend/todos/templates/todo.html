@@ -3,4 +3,8 @@
   <ul v-for="item in items">
     <todo_item_component v-bind:item="item"></todo_item_component>
   </ul>
+  <div>
+    <input size="50" type="text" placeholder="ToDo description" ref="new_text"/>
+    <input type="button" id="btn-create" value="Create" v-on:click="create()"/>
+  </div>
 </div>
