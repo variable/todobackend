@@ -1,6 +1,29 @@
+class ToDo{
+    constructor(id, description, priority, completed_at){
+        this.id = id;
+        this.description = description;
+        this.priority = priority;
+        this.completed_at = completed_at;
+    }
+    save(){
+        if (this.id){
+            // Put
+        } else {
+            // Post
+        }
+    }
+}
+
 Vue.component('todo_item_component', {
-    template: '<li><input type="checkbox"/>{{ item.description }}</li>',
-    props: ['item']
+    template: '<li><input type="checkbox" v-on:click="update"/>{{ item.description }}</li>',
+    props: ['item'],
+    methods: {
+        update(){
+           var date = Date();
+           console.log(this.item);
+           this.$http.patch('/todo/api/'+this.item.uuid+'/', {completed_at:date.dateString}).then(alert(1));
+        }
+    }
 });
 
 var todo_app = new Vue({
@@ -8,21 +31,19 @@ var todo_app = new Vue({
     delimiters: ['${', '}'],
     data: {
         title: 'ToDo Items',
-        items: [
-            {
-                uuid: 'uuid1',
-                description: 'test1'
-            },
-            {
-                uuid: 'uuid2',
-                description: 'test2'
-            },
-        ]
+        items: [],
+    },
+    mounted() {
+        var self = this;
+        this.$http.get('/api/todos/', {responseType: 'json'}).then(resp=>{
+            self.items=resp.body;
+        });
     },
     methods: {
         create () {
             description = this.$refs.new_text.value;
             if (!description) {alert('Please enter description'); return;}
+            this.$http.post('/api/todos/', {description:description}).then(response=>{}, response=>{console.log(response.body)});
         }
     }
 });
