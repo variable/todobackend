@@ -33,13 +33,18 @@ const store = new Vuex.Store({
 })
 
 Vue.component('todo_item_component', {
-    template: '<li><input type="checkbox" v-on:click="complete_todo"/>{{ item.description }} <a href="#" v-on:click.stop="delete_todo"> [X] </a></li>',
+    template: `
+      <li>
+        <input type="checkbox" v-on:click="complete_todo" :checked="item.completed_at" />{{ item.description }} <a href="#" v-on:click.stop="delete_todo"> [X] </a>
+      </li>`,
     props: ['item'],
     methods: {
         complete_todo() {
-            var date = Date();
-            store.dispatch('update_todo', {uuid: this.item.uuid, completed_at: date.dateString});
-            // this.$http.patch('/todo/api/' + this.item.uuid + '/', {completed_at: date.dateString}).then(alert(1));
+            var completed_at = new Date().toISOString();
+            if (this.item.completed_at){
+                completed_at = null;
+            }
+            store.dispatch('update_todo', {uuid: this.item.uuid, completed_at: completed_at});
         },
         delete_todo() {
             store.dispatch('delete_todo', this.item.uuid);

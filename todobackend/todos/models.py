@@ -25,4 +25,4 @@ class TODOItem(models.Model):
 
 
     class Meta:
-        ordering = ['-completed_at', 'priority', '-created_at']
+        ordering = ['priority', '-created_at']
