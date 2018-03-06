@@ -4,16 +4,15 @@
   </div>
   <div class="row" v-if="items.length">&nbsp;</div>
   <form v-on:submit.prevent="create()">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-8">
-      <input size="45" type="text" placeholder="Add a todo item..." ref="new_text"/>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+        <input size="45" type="text" placeholder="Add a todo item..." ref="new_text"/>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
+        <input type="submit" id="btn-create" value="Add"/>
+      </div>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-2">
-      <input type="submit" id="btn-create" value="Add"/>
-    </div>
-  </div>
   </form>
-</div>
 </div>

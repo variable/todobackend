@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
   <div class="row">
@@ -40,4 +41,9 @@
       </h2>
     </div>
   </div>
+{% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script src="{%  static 'js/todo/todo.js' %}"></script>
 {% endblock %}

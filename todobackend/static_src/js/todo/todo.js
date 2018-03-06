@@ -1,3 +1,10 @@
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+import Vuex from 'vuex';
+
+Vue.use(VueResource);
+Vue.use(Vuex);
+
 const store = new Vuex.Store({
     state: {
         title: 'ToDo Items',
