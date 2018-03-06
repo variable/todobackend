@@ -1,3 +1,10 @@
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+import Vuex from 'vuex';
+
+Vue.use(VueResource);
+Vue.use(Vuex);
+
 const store = new Vuex.Store({
     state: {
         title: 'ToDo Items',
@@ -68,7 +75,7 @@ var todo_app = new Vue({
     }),
     methods: {
         create() {
-            description = this.$refs.new_text.value;
+            var description = this.$refs.new_text.value;
             if (!description) {
                 alert('Please enter description');
                 return;

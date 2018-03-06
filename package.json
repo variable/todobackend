@@ -1,0 +1,33 @@
+{
+  "name": "todobackend",
+  "version": "1.0.0",
+  "description": "todobackend ===========",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build_todo_raw": "npx webpack todobackend/static_src/js/todo/todo.js --output todobackend/static/js/app.js",
+    "build_todo": "npx webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/variable/todobackend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/variable/todobackend/issues"
+  },
+  "homepage": "https://github.com/variable/todobackend#readme",
+  "devDependencies": {
+    "webpack": "^4.1.0",
+    "webpack-cli": "^2.0.10"
+  },
+  "dependencies": {
+    "vue": "^2.5.13",
+    "vue-resource": "^1.5.0",
+    "vuex": "^3.0.1"
+  }
+}
