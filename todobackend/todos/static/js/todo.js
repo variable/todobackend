@@ -34,9 +34,12 @@ const store = new Vuex.Store({
 
 Vue.component('todo_item_component', {
     template: `
-      <li>
-        <input type="checkbox" v-on:click="complete_todo" :checked="item.completed_at" />{{ item.description }} <a href="#" v-on:click.stop="delete_todo"> [X] </a>
-      </li>`,
+    <div class="row list-group-item-action">
+        <div class="col-md-1"><input type="checkbox" v-on:click="complete_todo" :checked="item.completed_at" /></div>
+        <div class="col-md-10">{{ item.description }}</div>
+        <div class="col-md-1"><a href="#" v-on:click.stop="delete_todo"> [X] </a></div>
+    </div>
+        `,
     props: ['item'],
     methods: {
         complete_todo() {
@@ -71,6 +74,7 @@ var todo_app = new Vue({
                 return;
             }
             store.dispatch('add_todo', {'description': description})
+            this.$refs.new_text.value = '';
         }
     }
 });
