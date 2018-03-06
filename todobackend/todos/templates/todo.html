@@ -3,6 +3,7 @@
     <todo_item_component v-bind:item="item"></todo_item_component>
   </div>
   <div class="row" v-if="items.length">&nbsp;</div>
+  <form v-on:submit.prevent="create()">
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-8">
@@ -10,8 +11,9 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-2">
-      <input type="button" id="btn-create" value="Create" v-on:click="create()"/>
+      <input type="submit" id="btn-create" value="Add"/>
     </div>
   </div>
+  </form>
 </div>
 </div>
