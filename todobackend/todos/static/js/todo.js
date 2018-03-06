@@ -37,7 +37,7 @@ Vue.component('todo_item_component', {
     <div class="row list-group-item-action">
         <div class="col-md-1"><input type="checkbox" v-on:click="complete_todo" :checked="item.completed_at" /></div>
         <div class="col-md-10">{{ item.description }}</div>
-        <div class="col-md-1"><button v-on:click="delete_todo" class="close"><span aria-hidden="true">&times;</span></button></div>
+        <div class="col-md-1"><a href="#" v-on:click.stop="delete_todo"> [X] </a></div>
     </div>
         `,
     props: ['item'],
