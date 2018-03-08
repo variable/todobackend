@@ -5,6 +5,10 @@ import Vuex from 'vuex';
 Vue.use(VueResource);
 Vue.use(Vuex);
 
+// CSRF TOKEN
+var csrf_token = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+Vue.http.headers.common['X-CSRFToken'] = csrf_token;
+
 const store = new Vuex.Store({
     state: {
         title: 'ToDo Items',
@@ -61,6 +65,7 @@ Vue.component('todo_item_component', {
         }
     }
 });
+
 
 var todo_app = new Vue({
     el: "#todo-app",
