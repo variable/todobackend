@@ -2,7 +2,7 @@ FROM alang/django:2.0-python3
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
-RUN apt-get -y install mysql-server python-mysqldb
+RUN apt-get -y install python-mysqldb
 
 ENV DJANGO_MIGRATE=true
 RUN mkdir /tmp/requirements

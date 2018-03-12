@@ -1,0 +1,37 @@
+version: '3'
+
+volumes:
+  todobackend-db:
+
+
+services:
+  db:
+    image: mysql:5.6
+    volumes:
+      - todobackend-db:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+  runserver:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command:
+      - python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/usr/django/app
+    environment:
+      - DATABASE_URL=mysql://root:@db/todobackend
+    ports:
+      - 8000:8000
+  migrate:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command:
+      - python manage.py migrate
+    volumes:
+      - ./:/usr/django/app
+    environment:
+      - DATABASE_URL=mysql://root:@db/todobackend
