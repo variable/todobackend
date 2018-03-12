@@ -23,3 +23,5 @@ services:
       - DATABASE_URL=mysql://root:@db/todobackend
     ports:
       - 8000:8000
+    depends_on:
+      - db
