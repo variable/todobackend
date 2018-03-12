@@ -13,10 +13,8 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
-  runserver:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+  app:
+    build: .
     command:
       - python manage.py runserver 0.0.0.0:8000
     volumes:
@@ -25,13 +23,3 @@ services:
       - DATABASE_URL=mysql://root:@db/todobackend
     ports:
       - 8000:8000
-  migrate:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    command:
-      - python manage.py migrate
-    volumes:
-      - ./:/usr/django/app
-    environment:
-      - DATABASE_URL=mysql://root:@db/todobackend
