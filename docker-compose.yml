@@ -1,3 +1,5 @@
+# flatten compose structure due to 'extends' not available in version 3 yet
+# https://github.com/moby/moby/issues/31101
 version: '3'
 
 volumes:
@@ -13,10 +15,35 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
-  app:
+    container_name: todobackend_db
+  runserver:
     build: .
     command:
       - python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/usr/django/app
+    environment:
+      - DATABASE_URL=mysql://root:@db/todobackend
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  migrate:
+    build: .
+    command:
+      - python manage.py migrate
+    volumes:
+      - ./:/usr/django/app
+    environment:
+      - DATABASE_URL=mysql://root:@db/todobackend
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  makemigrations:
+    build: .
+    command:
+      - python manage.py makemigrations
     volumes:
       - ./:/usr/django/app
     environment:
